@@ -19,7 +19,8 @@ export const Navbar = () => {
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    // Remove this line to avoid double state updates
+    // document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
   
   return (

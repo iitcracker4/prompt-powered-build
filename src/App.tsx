@@ -22,6 +22,7 @@ const queryClient = new QueryClient();
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const { theme } = useTheme();
   
+  // Only toggle the class when theme changes, not on every render
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
   }, [theme]);

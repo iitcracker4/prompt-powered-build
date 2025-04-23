@@ -26,35 +26,43 @@ export interface User {
   avatar?: string;
 }
 
-interface AppState {
+interface ThemeState {
   theme: 'light' | 'dark';
-  user: User | null;
-  projects: Project[];
-  currentProject: Project | null;
-  isLoggedIn: boolean;
-  isLoading: boolean;
-  
-  // Actions
   setTheme: (theme: 'light' | 'dark') => void;
+}
+
+interface UserState {
+  user: User | null;
+  isLoggedIn: boolean;
   login: (user: User) => void;
   logout: () => void;
+}
+
+interface ProjectState {
+  projects: Project[];
+  currentProject: Project | null;
+  isLoading: boolean;
   createProject: (project: Omit<Project, 'id' | 'createdAt' | 'updatedAt' | 'status'>) => void;
   setCurrentProject: (projectId: string) => void;
 }
 
-export const useAppStore = create<AppState>((set, get) => ({
+// Separate stores for different concerns
+export const useThemeStore = create<ThemeState>((set) => ({
   theme: 'light',
+  setTheme: (theme) => set({ theme }),
+}));
+
+export const useUserStore = create<UserState>((set) => ({
   user: null,
+  isLoggedIn: false,
+  login: (user) => set({ user, isLoggedIn: true }),
+  logout: () => set({ user: null, isLoggedIn: false }),
+}));
+
+export const useProjectStore = create<ProjectState>((set, get) => ({
   projects: [],
   currentProject: null,
-  isLoggedIn: false,
   isLoading: false,
-  
-  setTheme: (theme) => set({ theme }),
-  
-  login: (user) => set({ user, isLoggedIn: true }),
-  
-  logout: () => set({ user: null, isLoggedIn: false }),
   
   createProject: (project) => {
     const newProject = {
@@ -80,34 +88,28 @@ export const useAppStore = create<AppState>((set, get) => ({
 
 // Hook to access theme
 export const useTheme = () => {
-  const { theme, setTheme } = useAppStore(state => ({
+  return useThemeStore(state => ({
     theme: state.theme,
     setTheme: state.setTheme
   }));
-  
-  return { theme, setTheme };
 };
 
 // Hook to access user
 export const useUser = () => {
-  const { user, isLoggedIn, login, logout } = useAppStore(state => ({
+  return useUserStore(state => ({
     user: state.user,
     isLoggedIn: state.isLoggedIn,
     login: state.login,
     logout: state.logout
   }));
-  
-  return { user, isLoggedIn, login, logout };
 };
 
 // Hook to access projects
 export const useProjects = () => {
-  const { projects, currentProject, createProject, setCurrentProject } = useAppStore(state => ({
+  return useProjectStore(state => ({
     projects: state.projects,
     currentProject: state.currentProject,
     createProject: state.createProject,
     setCurrentProject: state.setCurrentProject
   }));
-  
-  return { projects, currentProject, createProject, setCurrentProject };
 };

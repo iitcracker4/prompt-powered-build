@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useUser } from '@/store/store';
@@ -19,8 +18,7 @@ export const Navbar = () => {
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    // Remove this line to avoid double state updates
-    // document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    // No DOM manipulation here - let the ThemeProvider handle it
   };
   
   return (

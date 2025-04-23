@@ -47,19 +47,19 @@ interface ProjectState {
 }
 
 // Separate stores for different concerns
-export const useThemeStore = create<ThemeState>((set) => ({
+export const useThemeStore = create<ThemeState>()((set) => ({
   theme: 'light',
   setTheme: (theme) => set({ theme }),
 }));
 
-export const useUserStore = create<UserState>((set) => ({
+export const useUserStore = create<UserState>()((set) => ({
   user: null,
   isLoggedIn: false,
   login: (user) => set({ user, isLoggedIn: true }),
   logout: () => set({ user: null, isLoggedIn: false }),
 }));
 
-export const useProjectStore = create<ProjectState>((set, get) => ({
+export const useProjectStore = create<ProjectState>()((set, get) => ({
   projects: [],
   currentProject: null,
   isLoading: false,
@@ -86,30 +86,30 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
   }
 }));
 
-// Hook to access theme
+// Hook to access theme - using selector for performance
 export const useTheme = () => {
-  return useThemeStore(state => ({
-    theme: state.theme,
-    setTheme: state.setTheme
-  }));
+  const theme = useThemeStore(state => state.theme);
+  const setTheme = useThemeStore(state => state.setTheme);
+  
+  return { theme, setTheme };
 };
 
-// Hook to access user
+// Hook to access user - using selector for performance
 export const useUser = () => {
-  return useUserStore(state => ({
-    user: state.user,
-    isLoggedIn: state.isLoggedIn,
-    login: state.login,
-    logout: state.logout
-  }));
+  const user = useUserStore(state => state.user);
+  const isLoggedIn = useUserStore(state => state.isLoggedIn);
+  const login = useUserStore(state => state.login);
+  const logout = useUserStore(state => state.logout);
+  
+  return { user, isLoggedIn, login, logout };
 };
 
-// Hook to access projects
+// Hook to access projects - using selector for performance
 export const useProjects = () => {
-  return useProjectStore(state => ({
-    projects: state.projects,
-    currentProject: state.currentProject,
-    createProject: state.createProject,
-    setCurrentProject: state.setCurrentProject
-  }));
+  const projects = useProjectStore(state => state.projects);
+  const currentProject = useProjectStore(state => state.currentProject);
+  const createProject = useProjectStore(state => state.createProject);
+  const setCurrentProject = useProjectStore(state => state.setCurrentProject);
+  
+  return { projects, currentProject, createProject, setCurrentProject };
 };

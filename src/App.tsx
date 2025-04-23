@@ -4,8 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
-import { useTheme } from "@/store/store";
+import { useEffect, useState } from "react";
+import { useThemeStore } from "@/store/store";
 
 // Pages
 import Index from "./pages/Index";
@@ -20,13 +20,12 @@ import Settings from "./pages/Settings";
 const queryClient = new QueryClient();
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const { theme } = useTheme();
+  // Use direct store access with selector to prevent unnecessary rerenders
+  const theme = useThemeStore((state) => state.theme);
   
   // Set theme class once on initial mount and when theme changes
   useEffect(() => {
-    // Remove both classes first to ensure clean state
     document.documentElement.classList.remove('dark', 'light');
-    // Then add the current theme
     document.documentElement.classList.add(theme);
   }, [theme]);
   

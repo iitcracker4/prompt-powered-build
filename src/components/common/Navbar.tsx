@@ -1,9 +1,9 @@
+
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { useUser } from '@/store/store';
+import { useUser, useThemeStore } from '@/store/store';
 import { motion } from 'framer-motion';
 import { Menu, Moon, Sun } from 'lucide-react';
-import { useTheme } from '@/store/store';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,12 +13,13 @@ import {
 
 export const Navbar = () => {
   const { user, isLoggedIn, logout } = useUser();
-  const { theme, setTheme } = useTheme();
+  // Access theme state directly from store with selector
+  const theme = useThemeStore((state) => state.theme);
+  const setTheme = useThemeStore((state) => state.setTheme);
   
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    // No DOM manipulation here - let the ThemeProvider handle it
   };
   
   return (

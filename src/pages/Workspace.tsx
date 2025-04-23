@@ -14,6 +14,9 @@ const Workspace = () => {
         <div className="flex flex-1 overflow-hidden">
           <WorkspaceSidebar />
           <div className="flex flex-1 overflow-hidden">
+            <div className="flex items-center p-2">
+              <SidebarTrigger />
+            </div>
             <ProjectSidebar />
             <div className="flex-1 overflow-hidden">
               <CodeEditor />

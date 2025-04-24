@@ -79,9 +79,11 @@ export const WorkspaceSidebar = () => {
               {mainMenuItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton tooltip={item.label} asChild>
-                    <Link to={item.to} className="w-full">
-                      <item.icon className="w-5 h-5" />
-                      <span>{item.label}</span>
+                    <Link to={item.to}>
+                      <div className="flex items-center gap-2 w-full">
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.label}</span>
+                      </div>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -97,9 +99,11 @@ export const WorkspaceSidebar = () => {
               {resourceItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton tooltip={item.label} asChild>
-                    <Link to={item.to} className="w-full">
-                      <item.icon className="w-5 h-5" />
-                      <span>{item.label}</span>
+                    <Link to={item.to}>
+                      <div className="flex items-center gap-2 w-full">
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.label}</span>
+                      </div>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -113,9 +117,11 @@ export const WorkspaceSidebar = () => {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton tooltip="Settings" asChild>
-              <Link to="/settings" className="w-full">
-                <Settings className="w-5 h-5" />
-                <span>Settings</span>
+              <Link to="/settings">
+                <div className="flex items-center gap-2 w-full">
+                  <Settings className="w-5 h-5" />
+                  <span>Settings</span>
+                </div>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

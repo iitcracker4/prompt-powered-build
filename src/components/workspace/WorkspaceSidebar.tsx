@@ -57,7 +57,7 @@ export const WorkspaceSidebar = () => {
         </div>
       </SidebarHeader>
       
-      <SidebarContent className="px-4">
+      <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Main Menu</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -95,7 +95,7 @@ export const WorkspaceSidebar = () => {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="px-4 mb-4">
+      <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton tooltip="Settings" asChild>

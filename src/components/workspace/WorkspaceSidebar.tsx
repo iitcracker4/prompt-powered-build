@@ -9,7 +9,6 @@ import {
   FileText,
   HelpCircle,
   Settings,
-  Boxes
 } from 'lucide-react';
 import {
   Sidebar,

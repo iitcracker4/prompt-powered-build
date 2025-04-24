@@ -11,6 +11,7 @@ import {
   Settings,
   Menu,
 } from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -28,7 +29,7 @@ import { Button } from '@/components/ui/button';
 
 interface MenuItem {
   label: string;
-  icon: React.ComponentType;
+  icon: LucideIcon;
   to: string;
 }
 
@@ -130,3 +131,4 @@ export const WorkspaceSidebar = () => {
     </Sidebar>
   );
 };
+

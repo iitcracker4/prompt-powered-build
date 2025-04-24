@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useUser, useThemeStore } from '@/store/store';
@@ -13,7 +12,6 @@ import {
 
 export const Navbar = () => {
   const { user, isLoggedIn, logout } = useUser();
-  // Access theme state directly from store with selector
   const theme = useThemeStore((state) => state.theme);
   const setTheme = useThemeStore((state) => state.setTheme);
   
@@ -31,7 +29,7 @@ export const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center">
-          <span className="text-2xl font-bold text-gradient">CodebaseCraft</span>
+          <span className="text-2xl font-bold text-gradient">Ultimate AI</span>
         </Link>
         
         <nav className="hidden md:flex items-center gap-6">

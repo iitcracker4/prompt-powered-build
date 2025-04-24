@@ -2,14 +2,14 @@
 import { Link } from 'react-router-dom';
 import { 
   Plus, 
-  Navigation, 
   LayoutDashboard, 
-  FolderOpen, 
-  Package, 
-  Activity,
-  Book,
+  FolderOpen,
+  Rocket,
+  BarChart2,
   FileText,
-  HelpCircle
+  HelpCircle,
+  Settings,
+  Boxes
 } from 'lucide-react';
 import {
   Sidebar,
@@ -21,7 +21,9 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
+import { Button } from '@/components/ui/button';
 
 interface MenuItem {
   label: string;
@@ -29,14 +31,14 @@ interface MenuItem {
   to: string;
 }
 
-const menuItems: MenuItem[] = [
-  { label: "New Project", icon: Plus, to: "/prompt" },
-  { label: "Navigation", icon: Navigation, to: "/navigation" },
+const mainMenuItems: MenuItem[] = [
   { label: "Dashboard", icon: LayoutDashboard, to: "/dashboard" },
   { label: "My Projects", icon: FolderOpen, to: "/projects" },
-  { label: "Deployments", icon: Package, to: "/deployments" },
-  { label: "Analytics", icon: Activity, to: "/analytics" },
-  { label: "Resources", icon: Book, to: "/resources" },
+  { label: "Deployments", icon: Rocket, to: "/deployments" },
+  { label: "Analytics", icon: BarChart2, to: "/analytics" },
+];
+
+const resourceItems: MenuItem[] = [
   { label: "Documentation", icon: FileText, to: "/docs" },
   { label: "Help Center", icon: HelpCircle, to: "/help" },
 ];
@@ -45,20 +47,45 @@ export const WorkspaceSidebar = () => {
   return (
     <Sidebar>
       <SidebarHeader>
-        <div className="p-4">
-          <h2 className="text-xl font-bold text-primary">Technocrat's</h2>
+        <div className="p-4 space-y-4">
+          <h2 className="text-xl font-bold text-primary">Ultimate AI</h2>
+          <Button asChild className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700">
+            <Link to="/prompt">
+              <Plus className="w-4 h-4 mr-2" />
+              New Project
+            </Link>
+          </Button>
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      
+      <SidebarContent className="px-4">
         <SidebarGroup>
-          <SidebarGroupLabel>Menu</SidebarGroupLabel>
+          <SidebarGroupLabel>Main Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item) => (
+              {mainMenuItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton tooltip={item.label} asChild>
                     <Link to={item.to} className="w-full">
-                      <item.icon />
+                      <item.icon className="w-5 h-5" />
+                      <span>{item.label}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Resources</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {resourceItems.map((item) => (
+                <SidebarMenuItem key={item.label}>
+                  <SidebarMenuButton tooltip={item.label} asChild>
+                    <Link to={item.to} className="w-full">
+                      <item.icon className="w-5 h-5" />
                       <span>{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -68,6 +95,19 @@ export const WorkspaceSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarFooter className="px-4 mb-4">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton tooltip="Settings" asChild>
+              <Link to="/settings" className="w-full">
+                <Settings className="w-5 h-5" />
+                <span>Settings</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 };

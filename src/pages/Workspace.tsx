@@ -9,16 +9,16 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 const Workspace = () => {
   return (
     <SidebarProvider>
-      <div className="flex flex-col h-screen w-full">
+      <div className="flex flex-col h-screen w-full bg-background">
         <Navbar />
         <div className="flex flex-1 overflow-hidden">
           <WorkspaceSidebar />
-          <div className="flex flex-1 overflow-hidden">
-            <div className="flex items-center p-2">
+          <div className="flex flex-1 min-w-0 overflow-hidden">
+            <div className="flex items-center p-2 md:hidden">
               <SidebarTrigger />
             </div>
             <ProjectSidebar />
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 min-w-0 overflow-hidden">
               <CodeEditor />
             </div>
             <AISidebar />

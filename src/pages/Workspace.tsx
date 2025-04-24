@@ -4,7 +4,11 @@ import { ProjectSidebar } from "@/components/workspace/ProjectSidebar";
 import { CodeEditor } from "@/components/workspace/CodeEditor";
 import { AISidebar } from "@/components/workspace/AISidebar";
 import { WorkspaceSidebar } from "@/components/workspace/WorkspaceSidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { 
+  SidebarProvider, 
+  SidebarTrigger,
+  SidebarRail,
+} from "@/components/ui/sidebar";
 
 const Workspace = () => {
   return (
@@ -13,6 +17,7 @@ const Workspace = () => {
         <Navbar />
         <div className="flex flex-1 overflow-hidden">
           <WorkspaceSidebar />
+          <SidebarRail />
           <div className="flex flex-1 min-w-0 overflow-hidden">
             <div className="flex items-center p-2 md:hidden">
               <SidebarTrigger />

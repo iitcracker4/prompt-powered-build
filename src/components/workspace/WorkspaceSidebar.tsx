@@ -9,6 +9,7 @@ import {
   FileText,
   HelpCircle,
   Settings,
+  Menu,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -21,6 +22,7 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarFooter,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { Button } from '@/components/ui/button';
 
@@ -43,11 +45,23 @@ const resourceItems: MenuItem[] = [
 ];
 
 export const WorkspaceSidebar = () => {
+  const { toggleSidebar } = useSidebar();
+  
   return (
     <Sidebar>
       <SidebarHeader>
         <div className="p-4 space-y-6">
-          <h2 className="text-xl font-bold text-primary">Ultimate AI</h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-bold text-primary">Ultimate AI</h2>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={toggleSidebar}
+              className="md:hidden"
+            >
+              <Menu className="h-4 w-4" />
+            </Button>
+          </div>
           <Button asChild className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700">
             <Link to="/prompt">
               <Plus className="w-4 h-4 mr-2" />

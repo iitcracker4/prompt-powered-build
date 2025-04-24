@@ -46,7 +46,7 @@ export const WorkspaceSidebar = () => {
   return (
     <Sidebar>
       <SidebarHeader>
-        <div className="p-4 space-y-4">
+        <div className="p-4 space-y-6">
           <h2 className="text-xl font-bold text-primary">Ultimate AI</h2>
           <Button asChild className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700">
             <Link to="/prompt">

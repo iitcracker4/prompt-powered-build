@@ -1,7 +1,6 @@
-
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { MachineLearning as MLIcon, Layers, Zap, Code, Database, BarChart2 } from "lucide-react";
+import { Binary, Layers, Zap, Code, Database, BarChart2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const MachineLearning = () => {
@@ -39,7 +38,7 @@ const MachineLearning = () => {
         {/* Hero section */}
         <section className="text-center max-w-3xl mx-auto">
           <div className="p-4 w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center mb-6 mx-auto">
-            <MLIcon className="h-8 w-8 text-primary" />
+            <Binary className="h-8 w-8 text-primary" />
           </div>
           <h2 className="text-3xl font-bold mb-4">Future of Development with Machine Learning</h2>
           <p className="text-lg text-muted-foreground mb-6">

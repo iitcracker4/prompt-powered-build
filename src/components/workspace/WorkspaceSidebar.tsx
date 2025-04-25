@@ -10,15 +10,15 @@ import {
   HelpCircle,
   Settings,
   Menu,
-  Development,
+  Code,
   Eye,
-  Features,
+  Layers,
   DollarSign,
   Info,
   Book,
   Briefcase,
   User,
-  MachineLearning,
+  Binary,
   Activity,
 } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
@@ -48,12 +48,12 @@ const mainMenuItems: MenuItem[] = [
   { label: "My Projects", icon: FolderOpen, to: "/projects" },
   { label: "Deployments", icon: Rocket, to: "/deployments" },
   { label: "Analytics", icon: BarChart2, to: "/analytics" },
-  { label: "Development", icon: Development, to: "/development" },
+  { label: "Development", icon: Code, to: "/development" },
 ];
 
 const resourceItems: MenuItem[] = [
   { label: "Documentation", icon: FileText, to: "/docs" },
-  { label: "Features", icon: Features, to: "/features" },
+  { label: "Features", icon: Layers, to: "/features" },
   { label: "See How It Works", icon: Eye, to: "/how-it-works" },
   { label: "Help Center", icon: HelpCircle, to: "/help" },
 ];
@@ -67,7 +67,7 @@ const infoItems: MenuItem[] = [
 ];
 
 const futureItems: MenuItem[] = [
-  { label: "Machine Learning", icon: MachineLearning, to: "/machine-learning" },
+  { label: "Machine Learning", icon: Binary, to: "/machine-learning" },
   { label: "AI Agents", icon: Activity, to: "/ai-agents" },
 ];
 

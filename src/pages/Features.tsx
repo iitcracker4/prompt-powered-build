@@ -1,7 +1,7 @@
 
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Features as FeaturesIcon, Code, Bot, Layers, LineChart, Shield, Zap } from "lucide-react";
+import { Layers, Code, Bot, LineChart, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Features = () => {

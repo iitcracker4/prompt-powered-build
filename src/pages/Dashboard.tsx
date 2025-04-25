@@ -1,7 +1,7 @@
 
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LayoutDashboard, Users, Code, Rocket } from "lucide-react";
+import { LayoutDashboard, Users, Code, Rocket, Plus, FileText, BarChart2, Settings } from "lucide-react";
 
 const Dashboard = () => {
   const stats = [

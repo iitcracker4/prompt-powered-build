@@ -1,7 +1,6 @@
-
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Development as DevIcon, Code, GitBranch, Terminal, RefreshCw } from "lucide-react";
+import { Code, GitBranch, Terminal, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -119,7 +118,7 @@ const Development = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <DevIcon className="h-5 w-5 mr-2 text-primary" /> API Testing
+                  <Code className="h-5 w-5 mr-2 text-primary" /> API Testing
                 </CardTitle>
               </CardHeader>
               <CardContent>

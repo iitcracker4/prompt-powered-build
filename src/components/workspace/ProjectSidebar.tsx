@@ -1,12 +1,15 @@
-
 import { useState } from "react";
-import { Folder, File, Code, Database, Settings, ChevronDown, ChevronRight } from "lucide-react";
+import { Folder, File, Code, Database, Settings, ChevronDown, ChevronRight, Pencil, Check } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useProjects } from "@/store/store";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 export const ProjectSidebar = () => {
   const { currentProject } = useProjects();
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [projectName, setProjectName] = useState(currentProject?.name || "Project");
   
   // State for each folder's expanded status
   const [expandedFolders, setExpandedFolders] = useState({
@@ -45,10 +48,46 @@ export const ProjectSidebar = () => {
     ],
   };
 
+  const handleRename = () => {
+    // Here you would implement the actual rename logic
+    setIsEditingName(false);
+  };
+
   return (
     <div className="w-64 border-r flex flex-col h-full bg-card">
       <div className="p-4 border-b">
-        <h2 className="font-semibold truncate">{currentProject?.name || "Project"}</h2>
+        <div className="flex items-center justify-between">
+          {isEditingName ? (
+            <div className="flex gap-2 items-center flex-1">
+              <Input
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+                className="h-7"
+                autoFocus
+              />
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-7 w-7"
+                onClick={handleRename}
+              >
+                <Check className="h-4 w-4" />
+              </Button>
+            </div>
+          ) : (
+            <>
+              <h2 className="font-semibold truncate">{projectName}</h2>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-7 w-7"
+                onClick={() => setIsEditingName(true)}
+              >
+                <Pencil className="h-4 w-4" />
+              </Button>
+            </>
+          )}
+        </div>
         <p className="text-xs text-muted-foreground mt-1 truncate">
           {currentProject?.description || "No description"}
         </p>

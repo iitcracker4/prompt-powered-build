@@ -1,9 +1,12 @@
 
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-// Mock code for demonstration
-const mockCode = `import React, { useState } from 'react';
+const mockCode = `// Welcome to Ultimate AI Code Editor
+import React, { useState } from 'react';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -37,14 +40,26 @@ export const CodeEditor = () => {
         </div>
         
         <TabsContent value="editor" className="flex-1 p-0 m-0">
-          <div className="h-full">
-            <div className="bg-muted/40 p-2 text-xs border-b flex items-center">
-              <span className="font-medium">App.jsx</span>
+          <ScrollArea className="h-full">
+            <div className="h-full">
+              <div className="bg-muted/40 p-2 text-xs border-b flex items-center">
+                <span className="font-medium">App.jsx</span>
+              </div>
+              <div className="p-4">
+                <SyntaxHighlighter
+                  language="javascript"
+                  style={atomOneDark}
+                  customStyle={{
+                    backgroundColor: 'transparent',
+                    fontSize: '14px',
+                    margin: 0,
+                  }}
+                >
+                  {code}
+                </SyntaxHighlighter>
+              </div>
             </div>
-            <pre className="p-4 text-sm font-mono overflow-auto h-[calc(100%-37px)]">
-              <code>{code}</code>
-            </pre>
-          </div>
+          </ScrollArea>
         </TabsContent>
         
         <TabsContent value="preview" className="flex-1 p-0 m-0 h-full">
@@ -53,7 +68,7 @@ export const CodeEditor = () => {
               <h1 className="text-2xl font-bold mb-4">Your AI-powered app is ready!</h1>
               <p className="mb-6 text-gray-600 dark:text-gray-300">Edit this code or add new features with AI</p>
               <div className="card">
-                <button className="px-4 py-2 bg-codebase-600 text-white rounded-md hover:bg-codebase-700 transition-colors">
+                <button className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors">
                   count is 0
                 </button>
               </div>

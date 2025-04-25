@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -29,6 +28,7 @@ import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import MachineLearning from "./pages/MachineLearning";
 import AIAgents from "./pages/AIAgents";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +54,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/prompt" element={<Prompt />} />
             <Route path="/workspace" element={<Workspace />} />
             <Route path="/workspace/:id" element={<Workspace />} />

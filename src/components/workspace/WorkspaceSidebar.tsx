@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { 
   Plus, 
@@ -21,7 +20,7 @@ import {
   Binary,
   Activity,
 } from 'lucide-react';
-import { LucideIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Sidebar,
   SidebarContent,
@@ -35,7 +34,6 @@ import {
   SidebarFooter,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Button } from '@/components/ui/button';
 
 interface MenuItem {
   label: string;
@@ -106,11 +104,9 @@ export const WorkspaceSidebar = () => {
               {mainMenuItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton tooltip={item.label} asChild>
-                    <Link to={item.to}>
-                      <div className="flex items-center gap-2 w-full">
-                        <item.icon className="w-5 h-5" />
-                        <span>{item.label}</span>
-                      </div>
+                    <Link to={item.to} className="flex items-center gap-2 w-full">
+                      <item.icon className="w-5 h-5" />
+                      <span>{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -126,11 +122,9 @@ export const WorkspaceSidebar = () => {
               {resourceItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton tooltip={item.label} asChild>
-                    <Link to={item.to}>
-                      <div className="flex items-center gap-2 w-full">
-                        <item.icon className="w-5 h-5" />
-                        <span>{item.label}</span>
-                      </div>
+                    <Link to={item.to} className="flex items-center gap-2 w-full">
+                      <item.icon className="w-5 h-5" />
+                      <span>{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -146,11 +140,9 @@ export const WorkspaceSidebar = () => {
               {infoItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton tooltip={item.label} asChild>
-                    <Link to={item.to}>
-                      <div className="flex items-center gap-2 w-full">
-                        <item.icon className="w-5 h-5" />
-                        <span>{item.label}</span>
-                      </div>
+                    <Link to={item.to} className="flex items-center gap-2 w-full">
+                      <item.icon className="w-5 h-5" />
+                      <span>{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -166,11 +158,9 @@ export const WorkspaceSidebar = () => {
               {futureItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <SidebarMenuButton tooltip={item.label} asChild>
-                    <Link to={item.to}>
-                      <div className="flex items-center gap-2 w-full">
-                        <item.icon className="w-5 h-5" />
-                        <span>{item.label}</span>
-                      </div>
+                    <Link to={item.to} className="flex items-center gap-2 w-full">
+                      <item.icon className="w-5 h-5" />
+                      <span>{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -184,11 +174,9 @@ export const WorkspaceSidebar = () => {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton tooltip="Settings" asChild>
-              <Link to="/settings">
-                <div className="flex items-center gap-2 w-full">
-                  <Settings className="w-5 h-5" />
-                  <span>Settings</span>
-                </div>
+              <Link to="/settings" className="flex items-center gap-2 w-full">
+                <Settings className="w-5 h-5" />
+                <span>Settings</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

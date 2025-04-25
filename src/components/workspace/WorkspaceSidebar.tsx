@@ -10,6 +10,16 @@ import {
   HelpCircle,
   Settings,
   Menu,
+  Development,
+  Eye,
+  Features,
+  DollarSign,
+  Info,
+  Book,
+  Briefcase,
+  User,
+  MachineLearning,
+  Activity,
 } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
 import {
@@ -38,11 +48,27 @@ const mainMenuItems: MenuItem[] = [
   { label: "My Projects", icon: FolderOpen, to: "/projects" },
   { label: "Deployments", icon: Rocket, to: "/deployments" },
   { label: "Analytics", icon: BarChart2, to: "/analytics" },
+  { label: "Development", icon: Development, to: "/development" },
 ];
 
 const resourceItems: MenuItem[] = [
   { label: "Documentation", icon: FileText, to: "/docs" },
+  { label: "Features", icon: Features, to: "/features" },
+  { label: "See How It Works", icon: Eye, to: "/how-it-works" },
   { label: "Help Center", icon: HelpCircle, to: "/help" },
+];
+
+const infoItems: MenuItem[] = [
+  { label: "Pricing", icon: DollarSign, to: "/pricing" },
+  { label: "About Us", icon: Info, to: "/about" },
+  { label: "Blog", icon: Book, to: "/blog" },
+  { label: "Careers", icon: Briefcase, to: "/careers" },
+  { label: "Contact", icon: User, to: "/contact" },
+];
+
+const futureItems: MenuItem[] = [
+  { label: "Machine Learning", icon: MachineLearning, to: "/machine-learning" },
+  { label: "AI Agents", icon: Activity, to: "/ai-agents" },
 ];
 
 export const WorkspaceSidebar = () => {
@@ -112,6 +138,46 @@ export const WorkspaceSidebar = () => {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Information</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {infoItems.map((item) => (
+                <SidebarMenuItem key={item.label}>
+                  <SidebarMenuButton tooltip={item.label} asChild>
+                    <Link to={item.to}>
+                      <div className="flex items-center gap-2 w-full">
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.label}</span>
+                      </div>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Future Scope</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {futureItems.map((item) => (
+                <SidebarMenuItem key={item.label}>
+                  <SidebarMenuButton tooltip={item.label} asChild>
+                    <Link to={item.to}>
+                      <div className="flex items-center gap-2 w-full">
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.label}</span>
+                      </div>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
 
       <SidebarFooter>
@@ -131,4 +197,3 @@ export const WorkspaceSidebar = () => {
     </Sidebar>
   );
 };
-

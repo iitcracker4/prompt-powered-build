@@ -1,10 +1,27 @@
 
-import { Folder, File, Code, Database, Settings } from "lucide-react";
+import { useState } from "react";
+import { Folder, File, Code, Database, Settings, ChevronDown, ChevronRight } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useProjects } from "@/store/store";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 export const ProjectSidebar = () => {
   const { currentProject } = useProjects();
+  
+  // State for each folder's expanded status
+  const [expandedFolders, setExpandedFolders] = useState({
+    pages: true,
+    components: true,
+    api: true,
+    models: true,
+  });
+
+  const toggleFolder = (folder: string) => {
+    setExpandedFolders(prev => ({
+      ...prev,
+      [folder]: !prev[folder]
+    }));
+  };
 
   // Mock project structure
   const projectStructure = {
@@ -38,83 +55,93 @@ export const ProjectSidebar = () => {
       </div>
       <ScrollArea className="flex-1">
         <div className="p-2">
-          <div className="mb-4">
-            <div className="flex items-center px-2 py-1.5 text-sm font-medium">
+          <Collapsible open={expandedFolders.pages} onOpenChange={() => toggleFolder('pages')}>
+            <CollapsibleTrigger className="flex items-center w-full px-2 py-1.5 text-sm font-medium hover:bg-muted rounded-md">
+              {expandedFolders.pages ? <ChevronDown size={16} className="mr-2 text-muted-foreground" /> : <ChevronRight size={16} className="mr-2 text-muted-foreground" />}
               <Folder size={16} className="mr-2 text-codebase-600" />
               <span>pages</span>
-            </div>
-            <div className="ml-5">
-              {projectStructure.pages.map((item) => (
-                <div
-                  key={item.name}
-                  className="flex items-center px-2 py-1.5 text-sm hover:bg-muted rounded-md cursor-pointer"
-                >
-                  <File size={14} className="mr-2 text-muted-foreground" />
-                  <span>{item.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <div className="ml-5">
+                {projectStructure.pages.map((item) => (
+                  <div
+                    key={item.name}
+                    className="flex items-center px-2 py-1.5 text-sm hover:bg-muted rounded-md cursor-pointer"
+                  >
+                    <File size={14} className="mr-2 text-muted-foreground" />
+                    <span>{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
           
-          <div className="mb-4">
-            <div className="flex items-center px-2 py-1.5 text-sm font-medium">
+          <Collapsible open={expandedFolders.components} onOpenChange={() => toggleFolder('components')}>
+            <CollapsibleTrigger className="flex items-center w-full px-2 py-1.5 text-sm font-medium hover:bg-muted rounded-md">
+              {expandedFolders.components ? <ChevronDown size={16} className="mr-2 text-muted-foreground" /> : <ChevronRight size={16} className="mr-2 text-muted-foreground" />}
               <Folder size={16} className="mr-2 text-codebase-600" />
               <span>components</span>
-            </div>
-            <div className="ml-5">
-              {projectStructure.components.map((item) => (
-                <div
-                  key={item.name}
-                  className="flex items-center px-2 py-1.5 text-sm hover:bg-muted rounded-md cursor-pointer"
-                >
-                  <File size={14} className="mr-2 text-muted-foreground" />
-                  <span>{item.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <div className="ml-5">
+                {projectStructure.components.map((item) => (
+                  <div
+                    key={item.name}
+                    className="flex items-center px-2 py-1.5 text-sm hover:bg-muted rounded-md cursor-pointer"
+                  >
+                    <File size={14} className="mr-2 text-muted-foreground" />
+                    <span>{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
           
-          <div className="mb-4">
-            <div className="flex items-center px-2 py-1.5 text-sm font-medium">
+          <Collapsible open={expandedFolders.api} onOpenChange={() => toggleFolder('api')}>
+            <CollapsibleTrigger className="flex items-center w-full px-2 py-1.5 text-sm font-medium hover:bg-muted rounded-md">
+              {expandedFolders.api ? <ChevronDown size={16} className="mr-2 text-muted-foreground" /> : <ChevronRight size={16} className="mr-2 text-muted-foreground" />}
               <Folder size={16} className="mr-2 text-codebase-600" />
               <span>api</span>
-            </div>
-            <div className="ml-5">
-              {projectStructure.api.map((item) => (
-                <div
-                  key={item.name}
-                  className="flex items-center px-2 py-1.5 text-sm hover:bg-muted rounded-md cursor-pointer"
-                >
-                  <Code size={14} className="mr-2 text-muted-foreground" />
-                  <span>{item.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <div className="ml-5">
+                {projectStructure.api.map((item) => (
+                  <div
+                    key={item.name}
+                    className="flex items-center px-2 py-1.5 text-sm hover:bg-muted rounded-md cursor-pointer"
+                  >
+                    <Code size={14} className="mr-2 text-muted-foreground" />
+                    <span>{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
           
-          <div className="mb-4">
-            <div className="flex items-center px-2 py-1.5 text-sm font-medium">
+          <Collapsible open={expandedFolders.models} onOpenChange={() => toggleFolder('models')}>
+            <CollapsibleTrigger className="flex items-center w-full px-2 py-1.5 text-sm font-medium hover:bg-muted rounded-md">
+              {expandedFolders.models ? <ChevronDown size={16} className="mr-2 text-muted-foreground" /> : <ChevronRight size={16} className="mr-2 text-muted-foreground" />}
               <Folder size={16} className="mr-2 text-codebase-600" />
               <span>models</span>
-            </div>
-            <div className="ml-5">
-              {projectStructure.models.map((item) => (
-                <div
-                  key={item.name}
-                  className="flex items-center px-2 py-1.5 text-sm hover:bg-muted rounded-md cursor-pointer"
-                >
-                  <Database size={14} className="mr-2 text-muted-foreground" />
-                  <span>{item.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <div className="ml-5">
+                {projectStructure.models.map((item) => (
+                  <div
+                    key={item.name}
+                    className="flex items-center px-2 py-1.5 text-sm hover:bg-muted rounded-md cursor-pointer"
+                  >
+                    <Database size={14} className="mr-2 text-muted-foreground" />
+                    <span>{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
           
-          <div>
-            <div className="flex items-center px-2 py-1.5 text-sm font-medium">
-              <Settings size={16} className="mr-2 text-codebase-600" />
-              <span>config</span>
-            </div>
+          <div className="flex items-center px-2 py-1.5 text-sm font-medium">
+            <Settings size={16} className="mr-2 text-codebase-600" />
+            <span>config</span>
           </div>
         </div>
       </ScrollArea>

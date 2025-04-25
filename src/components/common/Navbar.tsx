@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useUser, useThemeStore } from '@/store/store';
@@ -41,6 +42,9 @@ export const Navbar = () => {
           </Link>
           <Link to="/about" className="text-sm font-medium hover:text-codebase-600 transition-colors">
             About
+          </Link>
+          <Link to="/contact" className="text-sm font-medium hover:text-codebase-600 transition-colors">
+            Contact
           </Link>
         </nav>
         

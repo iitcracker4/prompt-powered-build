@@ -4,6 +4,7 @@ import { ProjectSidebar } from "@/components/workspace/ProjectSidebar";
 import { CodeEditor } from "@/components/workspace/CodeEditor";
 import { AISidebar } from "@/components/workspace/AISidebar";
 import { WorkspaceSidebar } from "@/components/workspace/WorkspaceSidebar";
+import { VoiceAssistant } from "@/components/ai/VoiceAssistant";
 import { 
   SidebarProvider, 
   SidebarTrigger,
@@ -29,6 +30,7 @@ const Workspace = () => {
             <AISidebar />
           </div>
         </div>
+        <VoiceAssistant />
       </div>
     </SidebarProvider>
   );

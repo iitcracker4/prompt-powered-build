@@ -7,7 +7,7 @@ import { useUser } from "@/store/store";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import { Github, Mail, Google } from "lucide-react";
+import { Github, Mail, LucideIcon } from "lucide-react";
 
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -27,7 +27,7 @@ export const LoginForm = () => {
       
       // For demo, we'll use hardcoded credentials
       if (email === "user@example.com" && password === "password") {
-        login({ name: "Demo User", email: "user@example.com" });
+        login({ id: crypto.randomUUID(), name: "Demo User", email: "user@example.com" });
         toast({
           title: "Login successful",
           description: "Welcome back to Ultimate AI!",
@@ -54,7 +54,7 @@ export const LoginForm = () => {
   const handleGithubLogin = () => {
     setIsLoading(true);
     setTimeout(() => {
-      login({ name: "Github User", email: "github@example.com" });
+      login({ id: crypto.randomUUID(), name: "Github User", email: "github@example.com" });
       toast({
         title: "Login successful",
         description: "Welcome back to Ultimate AI!",
@@ -67,7 +67,7 @@ export const LoginForm = () => {
   const handleGoogleLogin = () => {
     setIsLoading(true);
     setTimeout(() => {
-      login({ name: "Google User", email: "google@example.com" });
+      login({ id: crypto.randomUUID(), name: "Google User", email: "google@example.com" });
       toast({
         title: "Login successful",
         description: "Welcome back to Ultimate AI!",
@@ -158,7 +158,7 @@ export const LoginForm = () => {
             onClick={handleGoogleLogin}
             disabled={isLoading}
           >
-            <Google className="h-4 w-4" />
+            <Mail className="h-4 w-4" />
             <span>Google</span>
           </Button>
         </div>

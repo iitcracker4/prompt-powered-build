@@ -7,7 +7,7 @@ import { useUser } from "@/store/store";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import { Github, Mail, Google } from "lucide-react";
+import { Github, Mail } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export const RegisterForm = () => {
@@ -38,7 +38,7 @@ export const RegisterForm = () => {
       // Simulating API call delay
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      login({ name, email });
+      login({ id: crypto.randomUUID(), name, email });
       toast({
         title: "Registration successful",
         description: "Welcome to Ultimate AI!",
@@ -67,7 +67,7 @@ export const RegisterForm = () => {
     
     setIsLoading(true);
     setTimeout(() => {
-      login({ name: "Github User", email: "github@example.com" });
+      login({ id: crypto.randomUUID(), name: "Github User", email: "github@example.com" });
       toast({
         title: "Registration successful",
         description: "Welcome to Ultimate AI!",
@@ -89,7 +89,7 @@ export const RegisterForm = () => {
     
     setIsLoading(true);
     setTimeout(() => {
-      login({ name: "Google User", email: "google@example.com" });
+      login({ id: crypto.randomUUID(), name: "Google User", email: "google@example.com" });
       toast({
         title: "Registration successful",
         description: "Welcome to Ultimate AI!",
@@ -202,7 +202,7 @@ export const RegisterForm = () => {
             onClick={handleGoogleLogin}
             disabled={isLoading}
           >
-            <Google className="h-4 w-4" />
+            <Mail className="h-4 w-4" />
             <span>Google</span>
           </Button>
         </div>
